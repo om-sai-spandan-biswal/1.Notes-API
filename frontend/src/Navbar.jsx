@@ -7,7 +7,7 @@ function Navbar() {
   const logoutReq = async (event) => {
    try {
      event.preventDefault() ;
-     const res = await axios.post("http://localhost:5000/api/logout",[],{withCredentials : true}) ;
+     const res = await axios.post("https://one-notes-api-backend.onrender.com/api/logout",[],{withCredentials : true}) ;
      alert(res.data.message)
    } catch (error) {
     console.log(error) ;

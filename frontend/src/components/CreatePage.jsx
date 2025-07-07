@@ -15,7 +15,7 @@ function CreatePage() {
     event.preventDefault() ;
     try {
           const res = await axios.post(
-            "http://localhost:5000/api/note/create",
+            "https://one-notes-api-backend.onrender.com/api/note/create",
             formData,
             {
               withCredentials: true,

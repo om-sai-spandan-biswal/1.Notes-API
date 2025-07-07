@@ -10,7 +10,7 @@ function Note({ curUsr, note, refreshNotes }) {
     try {
       console.log("ok");
       const res = await axios.delete(
-        `http://localhost:5000/api/note/${note._id}`,
+        `https://one-notes-api-backend.onrender.com/api/note/${note._id}`,
         {
           withCredentials: true,
         }

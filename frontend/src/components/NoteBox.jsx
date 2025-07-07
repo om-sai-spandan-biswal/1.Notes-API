@@ -8,7 +8,7 @@ function NoteBox() {
  const [curUsr, setCurUsr] = useState({_id : ""});
   const fetchNotes = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/note", {
+      const response = await axios.get("https://one-notes-api-backend.onrender.com/api/note", {
         withCredentials: true,
       });
       setNotes(response.data);
@@ -18,7 +18,7 @@ function NoteBox() {
   };
   const fetchCurruser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/current-user", {
+      const response = await axios.get("https://one-notes-api-backend.onrender.com/api/current-user", {
         withCredentials: true,
       });
       setCurUsr(response.data);

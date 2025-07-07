@@ -14,7 +14,7 @@ function Signup() {
     event.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/signup",
+        "https://one-notes-api-backend.onrender.com/api/signup",
         formData,
         {
           withCredentials: true,

@@ -19,7 +19,7 @@ function UpdatePage() {
     event.preventDefault() ;
     try {
           const res = await axios.put(
-            `http://localhost:5000/api/note/${note._id}`,
+            `https://one-notes-api-backend.onrender.com/api/note/${note._id}`,
             formData,
             {
               withCredentials: true,
