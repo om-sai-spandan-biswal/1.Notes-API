@@ -26,10 +26,8 @@ router.post(
   worpAsync(async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
-    console.log(req.body)
     if (user != null || undefined) {
       const verifyPass = await bcrypt.compare(password, user["password"]);
-      console.log("Ok")
       if (verifyPass) {
         const token = jwt.sign({ email: email }, jwtSecrate);
         res.cookie("token", token);
