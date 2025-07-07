@@ -3,13 +3,15 @@ const router = express.Router() ;
 const User = require("../models/user");
 const Note = require("../models/note");
 const worpAsync = require("../utility/worpAsync");
-const verifyToken = require("../middlewere/verifyToken");
+const verifyToken = require("../middleware/verifyToken");
+
 require("dotenv").config()
 
 //Read
 router.get("/",worpAsync(async (req,res) => {
   const notes = await Note.find() ;
-  res.status(200).json(notes)
+  const data = await Promise.all(notes.map((note) => (note.populate("owner")))) ;
+  res.status(200).json(data)
 }))
 
 //Updata
@@ -67,6 +69,17 @@ router.post(
   })
 );
 
-
+//find
+router.post("/find", worpAsync(async (req,res) => {
+  const search = req.body["search"] ;
+  if (search != nu/api/notell || undefined) {
+    const regex = new RegExp(search, "i") ;
+    const data = await Note.find({note : { $regex: regex }})
+    res.status(200).json(data)
+  } else {
+    res.status(404).json({message : "Not search found"})
+  }
+  
+}))
 
 module.exports = router ;

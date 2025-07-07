@@ -1,0 +1,20 @@
+.note {
+    display: flex;
+    padding: 2rem;
+    margin: 2rem;
+    background-color: #6b6b6b;
+    color: goldenrod;
+    border: rgba(0, 7, 102, 0.788) solid 0.5rem;
+    width: 25rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.note h5 {
+    text-decoration: underline;
+}
+
+.form_btn {
+    display: inline-block;
+    margin-left: 1rem;
+}

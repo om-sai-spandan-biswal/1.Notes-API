@@ -11,8 +11,8 @@ const noteSchema = new Schema({
     required: true,
   },
   owner : {
-    type : Schema.ObjectId ,
-    ref : "user"
+    type : Schema.Types.ObjectId ,
+    ref : "User"
   }
 });
 
