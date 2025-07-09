@@ -13,7 +13,12 @@ router.post("/signup", async (req, res) => {
   const newUser = { ...userData, password: newPass };
   const creatredUser = await User.create(newUser);
   const token = jwt.sign({ email: newUser["email"] }, jwtSecrate);
-  res.cookie("token", token);
+  res.cookie("token", token, {
+          httpOnly: true,
+          secure: true, // required for https like Render
+          sameSite: "None", // allows cross-origin cookies
+          maxAge: 7 * 24 * 60 * 60 * 1000, // optional, 7 day expiry
+        });
   res.status(200).json(creatredUser);
 });
 
@@ -30,10 +35,18 @@ router.post(
       const verifyPass = await bcrypt.compare(password, user["password"]);
       if (verifyPass) {
         const token = jwt.sign({ email: email }, jwtSecrate);
-        res.cookie("token", token);
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: true, // required for https like Render
+          sameSite: "None", // allows cross-origin cookies
+          maxAge: 7 * 24 * 60 * 60 * 1000, // optional, 7 day expiry
+        });
+
         res.status(200).json({ message: "Successfully Login" });
       } else {
-        res.status(412).json({ message: "Somthing is Wrong(email or password)" });
+        res
+          .status(412)
+          .json({ message: "Somthing is Wrong(email or password)" });
       }
     } else {
       res.status(412).json({ message: "Somthing is Wrong(email or password)" });
@@ -42,7 +55,7 @@ router.post(
 );
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("token")
+  res.clearCookie("token");
   res.status(200).json({ message: "successfully logout" });
 });
 
