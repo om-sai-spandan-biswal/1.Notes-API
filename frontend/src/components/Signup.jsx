@@ -20,6 +20,9 @@ function Signup() {
           withCredentials: true,
         }
       );
+      {
+        alert(res.data.message);
+      }
       setFormData({
         email: "",
         password: "",

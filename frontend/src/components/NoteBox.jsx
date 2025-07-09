@@ -12,6 +12,7 @@ function NoteBox() {
         withCredentials: true,
       });
       setNotes(response.data);
+      
     } catch (error) {
       console.log(`Error : ${error}`);
     }
@@ -22,6 +23,9 @@ function NoteBox() {
         withCredentials: true,
       });
       setCurUsr(response.data);
+      {
+        alert(res.data.message);
+      }
     } catch (error) {
       console.log(`Error : ${error}`);
     }

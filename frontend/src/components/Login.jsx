@@ -19,6 +19,9 @@ function Login() {
           withCredentials: true,
         }
       );
+      {
+        alert(res.data.message);
+      }
       setFormData({
         email: "",
         password: "",
