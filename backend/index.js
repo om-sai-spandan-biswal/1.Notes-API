@@ -9,7 +9,7 @@ const verifyToken = require("./middleware/verifyToken");
 const cookieParser = require("cookie-parser");
 const authRouter = require("./routes/auth");
 const noteRouter = require("./routes/note");
-app.use(cors({origin : "http://localhost:5173" ,credentials : true})) ;
+app.use(cors({origin : "https://one-notes-api-frontend.onrender.com" ,credentials : true})) ;
 
 
 app.use(cookieParser());
