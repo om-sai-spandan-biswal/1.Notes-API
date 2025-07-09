@@ -19,7 +19,7 @@ router.post("/signup", async (req, res) => {
           sameSite: "None", // allows cross-origin cookies
           maxAge: 7 * 24 * 60 * 60 * 1000, // optional, 7 day expiry
         });
-  res.status(200).json(creatredUser);
+  res.status(200).json({...creatredUser,message : "You are Signup successfully"});
 });
 
 router.get("/test", (req, res) => {
